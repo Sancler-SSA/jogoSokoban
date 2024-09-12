@@ -25,14 +25,32 @@ height: inherit;
  
  .tabuleiro {
     display: block;
-    Width: 256px;
-    Height: 256px;
+    min-width: 256px;
+    min-height: 256px;
     border-radius: 8px;
-    border: solid 8px;
-    border-color: #505050;
+    border: solid 8px #505050;
     background-color: gray;
-    box-shadow: 4px 4px 4px black;
+    box-shadow: 4px 4px 4px rgba(140, 138, 138, 0.754);
+    padding: 2px 3px;
     
     
+ }
+
+
+ .row {
     
+    min-height:  auto;
+    margin: 2px 0;
+    display: flex;
+    
+ }
+
+ .cell {
+    height: 64px;
+    width: 64px;
+    margin: 0 1px;
+    background-color: aliceblue;
+    border-radius: 2px;
+    
+
  }
