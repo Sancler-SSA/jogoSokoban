@@ -16,7 +16,10 @@ height: inherit;
 }
 
 #game{
-    display: block;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    align-items: center;
 }
 
 
@@ -38,11 +41,11 @@ height: inherit;
 
 
  .row {
-    
+   display: flex; 
     min-height:  auto;
     margin: 2px 0;
-    display: flex;
-    
+    flex-direction: row;
+    height: 64px;
  }
 
  .cell {
@@ -54,3 +57,17 @@ height: inherit;
     
 
  }
+
+ .vazio {
+   background-color: unset;
+   box-shadow: none;
+ }
+
+ /* #cell1, #cell3, #cell6, #cell7, #cell9, #cell10, #cell11, #cell14,#cell17, #cell18, #cell19{
+   opacity: 0;
+   
+ }
+ 
+ #cell2, #cell4, #cell5, #cell8,  #cell12, #cell13, #cell15, #cell16,  #cell20 {
+   box-shadow: none;
+ } */
