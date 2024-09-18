@@ -1,0 +1,91 @@
+body{
+
+  height: 100vh;
+  margin: 0;
+  
+  
+  }
+  
+  
+  main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+      
+  }
+  
+  #game{
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+      align-items: center;
+      flex-wrap: wrap;
+      
+  }
+  
+  
+   
+   
+   
+   .tabuleiro {
+      display: block;
+      min-width: 256px;
+      min-height: 256px;
+      border-radius: 8px;
+      border: solid 8px #505050;
+     background-image: linear-gradient(orange, blue);
+      box-shadow: 4px 4px 4px rgba(140, 138, 138, 0.754);
+      padding: 2px 3px;
+  
+   }
+  
+  
+   .row {
+     
+      display: flex; 
+      min-height:  auto;
+      margin: 2px 0;
+      flex-direction: row;
+      
+   }
+  
+   .cell {
+      
+    width: 64px;
+      height: 64px;
+      margin: 0 1px;
+      background-color: aliceblue;
+      border-radius: 2px;
+      
+  
+   }
+  
+   .vazio {
+     background-color: unset;
+     box-shadow: none;
+  
+    
+   }
+  
+   /* .box {background-color: chocolate;}
+   .goal { background-color: burkywood;;} */
+
+   .player{
+    box-sizing: border-box;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    border: solid 4px rgb(32, 30, 192);
+    background-color: blue;
+
+
+   }
+   /* #cell1, #cell3, #cell6, #cell7, #cell9, #cell10, #cell11, #cell14,#cell17, #cell18, #cell19{
+     opacity: 0;
+     
+   }
+   
+   #cell2, #cell4, #cell5, #cell8,  #cell12, #cell13, #cell15, #cell16,  #cell20 {
+     box-shadow: none;
+   } */

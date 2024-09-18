@@ -133,8 +133,8 @@ function rule15(celula, numberOfRows, numberOfcollumns, k, i){
     }
 }
 
-builGameBoard(8, 8, rule0);
-// builGameBoard(8, 8, rule1);
+// builGameBoard(8, 8, rule0);
+builGameBoard(8, 8, rule1);
 // builGameBoard(8, 8, rule2);
 // builGameBoard(8, 8, rule3);
 // builGameBoard(8, 8, rule4);

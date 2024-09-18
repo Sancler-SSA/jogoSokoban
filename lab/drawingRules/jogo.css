@@ -50,7 +50,8 @@ height: inherit;
  }
 
  .cell {
-    width: min(5vw, 5vh);
+    
+  width: min(5vw, 5vh);
     height: min(5vw, 5vh);
     margin: 0 1px;
     background-color: aliceblue;
