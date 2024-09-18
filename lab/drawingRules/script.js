@@ -127,21 +127,27 @@ function rule14(celula, numberOfRows, numberOfcollumns, k, i){
         celula.classList.add('vazio');
     }
 }
+function rule15(celula, numberOfRows, numberOfcollumns, k, i){
+    if( i < k && i + k == numberOfRows - 1){
+
+    }
+}
 
 builGameBoard(8, 8, rule0);
-builGameBoard(8, 8, rule1);
-builGameBoard(8, 8, rule2);
-builGameBoard(8, 8, rule3);
-builGameBoard(8, 8, rule4);
-builGameBoard(8, 8, rule5);
-builGameBoard(8, 8, rule6);
-builGameBoard(8, 8, rule7);
-builGameBoard(8, 8, rule8);
-builGameBoard(8, 8, rule9);
-builGameBoard(8, 8, rule10);
-builGameBoard(8, 8, rule11);
-builGameBoard(8, 8, rule12);
-builGameBoard(8, 8, rule13);
-builGameBoard(8, 8, rule14);
+// builGameBoard(8, 8, rule1);
+// builGameBoard(8, 8, rule2);
+// builGameBoard(8, 8, rule3);
+// builGameBoard(8, 8, rule4);
+// builGameBoard(8, 8, rule5);
+// builGameBoard(8, 8, rule6);
+// builGameBoard(8, 8, rule7);
+// builGameBoard(8, 8, rule8);
+// builGameBoard(8, 8, rule9);
+// builGameBoard(8, 8, rule10);
+// builGameBoard(8, 8, rule11);
+// builGameBoard(8, 8, rule12);
+// builGameBoard(8, 8, rule13);
+// builGameBoard(8, 8, rule14);
+// builGameBoard(8, 8, rule15);
 
 

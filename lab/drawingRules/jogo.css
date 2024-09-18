@@ -33,25 +33,25 @@ height: inherit;
     min-height: 256px;
     border-radius: 8px;
     border: solid 8px #505050;
-    background-color: gray;
+   background-image: linear-gradient(orange, blue);
     box-shadow: 4px 4px 4px rgba(140, 138, 138, 0.754);
     padding: 2px 3px;
-    
-    
+
  }
 
 
  .row {
-   display: flex; 
+   
+    display: flex; 
     min-height:  auto;
     margin: 2px 0;
     flex-direction: row;
-    height: 64px;
+    
  }
 
  .cell {
-    height: 64px;
-    width: 64px;
+    width: min(5vw, 5vh);
+    height: min(5vw, 5vh);
     margin: 0 1px;
     background-color: aliceblue;
     border-radius: 2px;
@@ -60,7 +60,7 @@ height: inherit;
  }
 
  .vazio {
-   background-color: orange;
+   background-color: unset;
    box-shadow: none;
 
   .flag{
