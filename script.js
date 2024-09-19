@@ -1,38 +1,38 @@
-let x = 3;
-let y = 4;
+function Player(X, Y){
+    this.x = X;
+    this.y = Y;
+}
 
-const player = document.querySelector('.player');
+const player = new Player(3, 4);
 console.log(player);
 
-player.addEventListener("click", function(){
+const playerElement = document.querySelector('.player');
+console.log(player);
+
+playerElement.addEventListener("click", function(){
     alert("clicou no jogador");
 })
 
 window.addEventListener("keydown",function(event){
+    nextPosition(event.code);
     // window.alert("pressionou tecla");
-    console.log(event);
-    console.log(event.code);
-    console.log(event.ctrlKey);
+    // console.log(event);
+    // console.log(event.code);
+    // console.log(event.ctrlKey);
 
-    if(event.code == "ArrowDown");
+    // if(event.code == "ArrowDown");
         // console.log(event);
 
-        if(event.code == "ArrowUp"){
-        x += -1;
-}
-
-        if(event.code == "ArrowDown"){
-        x += +1;
-        }
-        if(event.code == "ArrowLeft"){
-        y += -1;
-        }
-
-        if(event.code == "ArrowRight"){
-        y += +1;
-        }
-        console.log(x, y);
+       
 })
 
+   function nextPosition(keycode){
 
-   
+    if(keycode == "ArrowUp")player.x --;
+    if(keycode == "ArrowDown")player.x ++;
+    if(keycode == "ArrowLeft")player.y --;
+    if(keycode == "ArrowRight")player.y ++;
+
+        console.log(keycode, player);
+
+   }
