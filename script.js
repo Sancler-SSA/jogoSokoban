@@ -3,7 +3,7 @@ function Player(X, Y){
     this.y = Y;
 }
 
-const player = new Player(3, 4);
+const player = new Player(0, 0);
 console.log(player);
 
 const playerElement = document.querySelector('.player');
@@ -25,14 +25,25 @@ window.addEventListener("keydown",function(event){
 
        
 })
+const celulas = document.querySelectorAll('.cell');
+
+console.log(celulas);
 
    function nextPosition(keycode){
-
     if(keycode == "ArrowUp")player.x --;
     if(keycode == "ArrowDown")player.x ++;
     if(keycode == "ArrowLeft")player.y --;
     if(keycode == "ArrowRight")player.y ++;
 
-        console.log(keycode, player);
+    console.log(keycode, player);
 
+    console.log(keycode,player);
+
+   const k = player.x * 4 + player.y;
+
+   celulas[k].append(playerElement);
+ 
    }
+   c
+
+ 
