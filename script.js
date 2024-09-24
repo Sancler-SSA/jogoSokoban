@@ -1,3 +1,36 @@
+function rule0(celula, k, i){ 
+    if (k <= 4) {
+        celula.classList.add('empty');
+    }
+}
+    builGameBoard(8, 8, rule0);
+
+
+function builGameBoard(numberOfRows, numberOfcollumns, drowrule) {
+    const game = document.getElementById("game");
+    const board = document.createElement('div');
+    board.classList.add('tabuleiro');
+
+
+    for (let k = 0; k < numberOfRows; k++) {
+        const row = document.createElement('div');
+        row.classList.add('row');
+        board.append(row);
+
+        for (let i = 0; i <numberOfcollumns; i++) {
+            const celula = document.createElement('div');
+            celula.classList.add('cell');
+            row.append(celula);
+
+            drowrule(celula, numberOfRows, numberOfcollumns, k, i);
+        }
+    }
+    game.append(board);
+
+
+
+
+
 const player = new Player(0, 0);
 const celulas = document.querySelectorAll('.cell');
 const playerElement = document.querySelector('.player');
@@ -11,34 +44,11 @@ playerElement.style.left = calculaPosicao(0);
 
 
 
-
 window.addEventListener("keydown", function (event) {
     const next = player.nextPosition(event.code);
-    if (verifyPosition(next)) {
-        let K = next.x * 4 + next.y;
-        player.moveTo(next, playerElement, celulas[K]);
-    }
+    
 })
-function Player(x, y) {
-    this.x = x;
-    this.y = y;
-    this.nextPosition = function(keycode) {
-        let { x, y } = player;
-        if (keycode === "ArrowUp") x--;
-        if (keycode === "ArrowDown") x++;
-        if (keycode === "ArrowLeft") y--;
-        if (keycode === "ArrowRight") y++;
-        return { x, y };
-    }
-    this.moveTo = function(position, element, _parent) {
-        let { x, y } = position;
-        this.x = position.x;
-        this.y = position.y;
-        // parent.append(element);
 
-        element.style.top = calculaPosicao(this.x);
-        element.style.left = calculaPosicao(this.y);
-    }
 }
 function verifyPosition(position) {
     console.log(position);
@@ -51,16 +61,11 @@ function calculaPosicao(qtd) {
     return `${qtd * distanciaSalto + margirFix}px`;
 }
 
-console.log(calculaPosicao(0, 64) === "0px");
-console.log(calculaPosicao(1, 64) === "64px");
-console.log(calculaPosicao(2, 32) === "64px");
-console.log(calculaPosicao(10, 60) === "600px");
-console.log(calculaPosicao(-3, 45) === "-135px");
-
-
-
-
-
+// // console.log(calculaPosicao(0, 64) === "0px");
+// // console.log(calculaPosicao(1, 64) === "64px");
+// // console.log(calculaPosicao(2, 32) === "64px");
+// // console.log(calculaPosicao(10, 60) === "600px");
+// // console.log(calculaPosicao(-3, 45) === "-135px");
 
 
 
