@@ -34,9 +34,10 @@ body{
       min-height: 256px;
       border-radius: 8px;
       border: solid 8px #505050;
-     background-image: linear-gradient(orange, blue);
+      background-image: linear-gradient(orange, blue);
       box-shadow: 4px 4px 4px rgba(140, 138, 138, 0.754);
       padding: 2px 3px;
+      position: absolute;
   
    }
   
@@ -78,6 +79,9 @@ body{
     height: 64px;
     border: solid 4px rgb(32, 30, 192);
     background-color: blue;
+    position: absolute;
+    top: 0;
+    left: 0;
 
 
    }
