@@ -68,6 +68,10 @@ body{
   
     
    }
+
+  .box { background-color: chocolate; }
+  .goal { background-color: burlywood; }
+  .wall { background-color: darkgray; }
   
    /* .box {background-color: chocolate;}
    .goal { background-color: burkywood;;} */
