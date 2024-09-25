@@ -1,5 +1,5 @@
 const player = new Player(0, 0);
-
+const celulas = document.querySelectorAll('.cell');
 const playerElement = document.querySelector('.player');
 
 
@@ -15,8 +15,8 @@ playerElement.style.left = calculaPosicao(0);
 window.addEventListener("keydown", function (event) {
     const next = player.nextPosition(event.code);
     if (verifyPosition(next)) {
-        
-        player.moveTo(next, playerElement);
+        let K = next.x * 4 + next.y;
+        player.moveTo(next, playerElement, celulas[K]);
     }
 })
 function Player(x, y) {
@@ -30,7 +30,7 @@ function Player(x, y) {
         if (keycode === "ArrowRight") y++;
         return { x, y };
     }
-    this.moveTo = function(position, element) {
+    this.moveTo = function(position, element, _parent) {
         let { x, y } = position;
         this.x = position.x;
         this.y = position.y;
@@ -51,3 +51,8 @@ function calculaPosicao(qtd) {
     return `${qtd * distanciaSalto + margirFix}px`;
 }
 
+console.log(calculaPosicao(0, 64) === "0px");
+console.log(calculaPosicao(1, 64) === "64px");
+console.log(calculaPosicao(2, 32) === "64px");
+console.log(calculaPosicao(10, 60) === "600px");
+console.log(calculaPosicao(-3, 45) === "-135px");
