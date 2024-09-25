@@ -64,14 +64,17 @@ height: inherit;
    background-color: unset;
    box-shadow: none;
 
-  .flag{
+.box { background-color: chocolate; }
+.goal { background-color: burlywood; }
+.wall { background-color: darkgray; }
+
+.flag{
     background-color: rgba(240, 60, 30, 0.4);
 
    }
  }
 
- .box {background-color: chocolate;}
- .goal { background-color: burkywood;;}
+ 
  /* #cell1, #cell3, #cell6, #cell7, #cell9, #cell10, #cell11, #cell14,#cell17, #cell18, #cell19{
    opacity: 0;
    

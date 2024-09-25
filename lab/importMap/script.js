@@ -1,23 +1,20 @@
 const boardMap = [
-    [ "#", "#", "#", "#", "#", "#", "#", "#" ],
-    [ "#", ".", ".", ".", ".", ".", ".", "#" ],
-    [ "#", ".", ".", ".", "#", ".", ".", "#" ],
-    [ "#", ".", "#", "G", ".", ".", ".", "#" ],
-    [ "#", ".", ".", "G", "B", "#", ".", "#" ],
-    [ "#", ".", ".", "#", ".", "B", ".", "#" ],
-    [ "#", ".", ".", "P", ".", ".", ".", "#" ],
-    [ "#", "#", "#", "#", "#", "#", "#", "#" ]
+    ["#", "#", "#", "#", "#", "#", "#", "#"],
+    ["#", ".", ".", ".", ".", ".", ".", "#"],
+    ["#", ".", ".", ".", "#", ".", ".", "#"],
+    ["#", ".", "#", "G", ".", ".", ".", "#"],
+    ["#", ".", ".", "G", "B", "#", ".", "#"],
+    ["#", ".", ".", "#", ".", "B", ".", "#"],
+    ["#", ".", ".", "P", ".", ".", ".", "#"],
+    ["#", "#", "#", "#", "#", "#", "#", "#"]
 ];
 
-const NUM_ROWS = mapa.lentgh;
-const NUM_COLS = mapa[0].lentgh;
 
+
+const NUM_ROWS = boardMap.length;
+const NUM_COLS = boardMap[0].length;
 
 builGameBoard(NUM_ROWS, NUM_COLS);
-
-
-playerElement.style.top = calculaPosicao(0);
-playerElement.style.left = calculaPosicao(0);
 
 function createGameElement(elementName, className, parentNode) {
     const element = document.createElement(elementName);
@@ -29,26 +26,20 @@ function createGameElement(elementName, className, parentNode) {
 function builGameBoard(numberOfRows, numberOfcollumns) {
     const game = document.getElementById("game");
     const board = createGameElement('div', 'tabuleiro', game);
-   
-    
-    for (let k = 0; k < numberOfRows; k++) {
+    console.log (numberOfRows)
+
+    for (let i = 0; i < numberOfRows; i++) {
         const row = createGameElement('div', 'row', board);
         board.append(row);
 
-        for (let i = 0; i < numberOfcollumns; i++) {
+        for (let j = 0; j < numberOfcollumns; j++) {
             const celula = createGameElement('div', 'cell', row);
-          
+            const char = boardMap[i][j];
+            // console.log(char);
+
+            // if (char === '#') celula.classList.add('wall');
+
+        }
+
     }
-    
 }
-
-
-
-
-
-
-
-
-
-
-
