@@ -63,7 +63,7 @@ height: inherit;
  .vazio {
    background-color: unset;
    box-shadow: none;
-
+ }
 .box { background-color: chocolate; }
 .goal { background-color: burlywood; }
 .wall { background-color: darkgray; }

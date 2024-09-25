@@ -33,11 +33,13 @@ function builGameBoard(numberOfRows, numberOfcollumns) {
         board.append(row);
 
         for (let j = 0; j < numberOfcollumns; j++) {
-            const celula = createGameElement('div', 'cell', row);
+            const cell = createGameElement('div', 'cell', row);
             const char = boardMap[i][j];
-            // console.log(char);
+            console.log(char);
 
-            // if (char === '#') celula.classList.add('wall');
+            if (char === '#') cell.classList.add('wall');
+            if (char === 'G') cell.classList.add('goal');
+            if (char === 'B') cell.classList.add('box');
 
         }
 
