@@ -1,15 +1,32 @@
+const boardMap = [
+    ["#", "#", "#", "#", "#", "#", "#", "#"],
+    ["#", ".", ".", ".", ".", ".", ".", "#"],
+    ["#", ".", ".", ".", "#", ".", ".", "#"],
+    ["#", ".", "#", "G", ".", ".", ".", "#"],
+    ["#", ".", ".", "G", "B", "#", ".", "#"],
+    ["#", ".", ".", "#", ".", "B", ".", "#"],
+    ["#", ".", ".", "P", ".", ".", ".", "#"],
+    ["#", "#", "#", "#", "#", "#", "#", "#"]
+];
+
+
+
+const NUM_ROWS = boardMap.length;
+const NUM_COLS = boardMap[0].length;
+
+
+
 const distanciaSalto = 66;
 const margirFix = 4;
-const NUM_ROWS = 8;
-const NUM_COLS = 8;
+
 
 builGameBoard(NUM_ROWS, NUM_COLS);
 
-const player = new Player(0, 0);
+const player = new Player(1, 1);
 const playerElement = document.querySelector('.player');
 
-playerElement.style.top = calculaPosicao(0);
-playerElement.style.left = calculaPosicao(0);
+playerElement.style.top = calculaPosicao(player.x);
+playerElement.style.left = calculaPosicao(player.y);
 
 window.addEventListener("keydown", function (event) {
     const next = player.nextPosition(event.code);
@@ -43,7 +60,7 @@ function Player(x, y) {
 function verifyPosition(position) {
     console.log(position);
     let { x, y } = position;
-    return x >= 0 && x < NUM_ROWS && y >= 0 && y < NUM_COLS;
+    return boardMap[x][y] !== '#';
 }
 
 function calculaPosicao(qtd) {
@@ -63,14 +80,21 @@ function builGameBoard(numberOfRows, numberOfcollumns) {
     const board = createGameElement('div', 'tabuleiro', game);
    
     
-    for (let k = 0; k < numberOfRows; k++) {
+    for (let i = 0; i < numberOfRows; i++) {
         const row = createGameElement('div', 'row', board);
         board.append(row);
 
-        for (let i = 0; i < numberOfcollumns; i++) {
-            const celula = createGameElement('div', 'cell', row);
-            row.append(celula);
+        for (let j = 0; j < numberOfcollumns; j++) {
+            const cell = createGameElement('div', 'cell', row);
+            const char = boardMap[i][j];
+            console.log(char);
+
+            if (char === '#') cell.classList.add('wall');
+            if (char === 'G') cell.classList.add('goal');
+            if (char === 'B') cell.classList.add('box');
+
         }
+
     }
     createGameElement('div', 'player', board);
 
