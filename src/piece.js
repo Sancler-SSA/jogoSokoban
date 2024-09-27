@@ -10,13 +10,13 @@ function Piece(x, y) {
         if (keycode === "ArrowRight") y++;
         return { x, y };
     }
-    this.moveTo = function (position, element) {
+    this.moveTo = function (position) {
         let { x, y } = position;
         this.x = position.x;
         this.y = position.y;
 
-        element.style.top = calculaPosicao(this.x);
-        element.style.left = calculaPosicao(this.y);
+        this.element.style.top = calculaPosicao(this.x);
+        this.element.style.left = calculaPosicao(this.y);
     }
 
     this.insertElementInto = function(className, parent){
@@ -28,10 +28,3 @@ function Piece(x, y) {
 
     }
 }
-
-function verifyPosition(position) {
-    console.log(position);
-    let { x, y } = position;
-    return boardMap[x][y] !== '#';
-}
-

@@ -19,7 +19,6 @@ function builGameBoard(numberOfRows, numberOfcollumns) {
 
     const game = document.getElementById("game");
     const board = createGameElement('div', 'tabuleiro', game);
-    // const pieces = createGameElement('div', 'player', board);
 
     for (let i = 0; i < numberOfRows; i++) {
         const row = createGameElement('div', 'row', board);
@@ -39,6 +38,8 @@ function builGameBoard(numberOfRows, numberOfcollumns) {
         }
 
     }
+
+    return pieces;
 }
 
 function createGameElement(elementName, className, parentNode) {
