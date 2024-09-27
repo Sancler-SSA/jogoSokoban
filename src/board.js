@@ -34,8 +34,10 @@ function builGameBoard(numberOfRows, numberOfcollumns) {
 
             if (char === '#') cell.classList.add(['wall']);
             if (char === 'G') cell.classList.add('goal');
-            if (char === 'B') cell.classList.add('box');
+            // if (char === 'B') cell.classList.add('box');
             if (char === 'P') pieces.player = { x: i, y: j };
+            if (char === 'B') pieces.boxes.push = { x: i, y: j };
+
 
         }
 
