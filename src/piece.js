@@ -1,3 +1,5 @@
+const distanciaSalto = 66;
+const margirFix = 4;
 
 function Piece(x, y) {
     this.x = x;
@@ -25,6 +27,12 @@ function Piece(x, y) {
         this.element.style.top = calculaPosicao(this.x);
         this.element.style.left = calculaPosicao(this.y);
 
-
     }
+
 }
+
+function calculaPosicao(qtd) {
+
+    return `${qtd * distanciaSalto + margirFix}px`;
+}
+
