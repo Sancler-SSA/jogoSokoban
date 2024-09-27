@@ -8,8 +8,8 @@ const margirFix = 4;
 const pieces = builGameBoard(NUM_ROWS, NUM_COLS);
 const board = document.querySelector('.tabuleiro');
 
-const playerElement =  createGameElement('div', 'player', board);
 const player = new Piece(pieces.player.x, pieces.player.y);
+const playerElement =  createGameElement('div', 'player', board);
 
 playerElement.style.top = calculaPosicao(player.x);
 playerElement.style.left = calculaPosicao(player.y);
@@ -21,13 +21,6 @@ window.addEventListener("keydown", function (event) {
         player.moveTo(next, playerElement);
     }
 })
-
-
-function verifyPosition(position) {
-    console.log(position);
-    let { x, y } = position;
-    return boardMap[x][y] !== '#';
-}
 
 function calculaPosicao(qtd) {
 
