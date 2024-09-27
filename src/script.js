@@ -10,12 +10,14 @@ const playerElement =  createGameElement('div', 'player', board);
 
 
 function createBoardPiece(piece, className) {
+    piece.insertElementInfo(className, board);
 
-const Element =  createGameElement('div', className, board);
-Element.style.top = calculaPosicao(piece.x);
-Element.style.left = calculaPosicao(piece.y);
+// const element =  createGameElement('div', className, board);
 
-return Element;
+// element.style.top = calculaPosicao(piece.x);
+// element.style.left = calculaPosicao(piece.y);
+
+return piece.element;
 
 
 }
@@ -39,7 +41,7 @@ function builGameBoard(numberOfRows, numberOfcollumns) {
 
     const game = document.getElementById("game");
     const board = createGameElement('div', 'tabuleiro', game);
-    // const pieces = createGameElement('div', 'player', board);
+  
 
     for (let i = 0; i < numberOfRows; i++) {
         const row = createGameElement('div', 'row', board);

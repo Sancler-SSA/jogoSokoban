@@ -18,6 +18,15 @@ function Piece(x, y) {
         element.style.top = calculaPosicao(this.x);
         element.style.left = calculaPosicao(this.y);
     }
+
+    this.insertElementInto = function(className, parent){
+        this.element =  createGameElement('div', className, parent);
+
+        this.element.style.top = calculaPosicao(this.x);
+        this.element.style.left = calculaPosicao(this.y);
+
+
+    }
 }
 
 function verifyPosition(position) {
@@ -25,3 +34,4 @@ function verifyPosition(position) {
     let { x, y } = position;
     return boardMap[x][y] !== '#';
 }
+
