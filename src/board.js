@@ -15,7 +15,9 @@ const NUM_ROWS = boardMap.length;
 const NUM_COLS = boardMap[0].length;
 
 function builGameBoard(numberOfRows, numberOfcollumns) {
-    const pieces = {};
+    const pieces = {
+        boxes:[]
+    };
 
     const game = document.getElementById("game");
     const board = createGameElement('div', 'tabuleiro', game);
