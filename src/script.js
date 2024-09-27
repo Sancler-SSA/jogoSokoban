@@ -9,7 +9,7 @@ const pieces = builGameBoard(NUM_ROWS, NUM_COLS);
 const board = document.querySelector('.tabuleiro');
 
 const playerElement =  createGameElement('div', 'player', board);
-const player = new Player(pieces.player.x, pieces.player.y);
+const player = new Piece(pieces.player.x, pieces.player.y);
 
 playerElement.style.top = calculaPosicao(player.x);
 playerElement.style.left = calculaPosicao(player.y);
@@ -22,26 +22,6 @@ window.addEventListener("keydown", function (event) {
     }
 })
 
-function Player(x, y) {
-    this.x = x;
-    this.y = y;
-    this.nextPosition = function (keycode) {
-        let { x, y } = player;
-        if (keycode === "ArrowUp") x--;
-        if (keycode === "ArrowDown") x++;
-        if (keycode === "ArrowLeft") y--;
-        if (keycode === "ArrowRight") y++;
-        return { x, y };
-    }
-    this.moveTo = function (position, element) {
-        let { x, y } = position;
-        this.x = position.x;
-        this.y = position.y;
-
-        element.style.top = calculaPosicao(this.x);
-        element.style.left = calculaPosicao(this.y);
-    }
-}
 
 function verifyPosition(position) {
     console.log(position);
