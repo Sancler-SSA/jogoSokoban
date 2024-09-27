@@ -21,9 +21,10 @@ const margirFix = 4;
 
 
 const pieces = builGameBoard(NUM_ROWS, NUM_COLS);
+const board = document.querySelector('.tabuleiro');
 
+const playerElement =  createGameElement('div', 'player', board);
 const player = new Player(pieces.player.x, pieces.player.y);
-const playerElement = document.querySelector('.player');
 
 playerElement.style.top = calculaPosicao(player.x);
 playerElement.style.left = calculaPosicao(player.y);
@@ -76,10 +77,11 @@ function createGameElement(elementName, className, parentNode) {
 }
 
 function builGameBoard(numberOfRows, numberOfcollumns) {
+    const pieces = {};
 
     const game = document.getElementById("game");
     const board = createGameElement('div', 'tabuleiro', game);
-    const pieces = createGameElement('div', 'player', board);
+    // const pieces = createGameElement('div', 'player', board);
 
     for (let i = 0; i < numberOfRows; i++) {
         const row = createGameElement('div', 'row', board);
@@ -99,8 +101,7 @@ function builGameBoard(numberOfRows, numberOfcollumns) {
         }
 
     }
-    // createGameElement('div', 'player', board);
-
+   
     return pieces;
 
 }
