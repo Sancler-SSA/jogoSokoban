@@ -1,9 +1,5 @@
-
-
-
 const distanciaSalto = 66;
 const margirFix = 4;
-
 
 const pieces = builGameBoard(NUM_ROWS, NUM_COLS);
 const board = document.querySelector('.tabuleiro');
@@ -11,8 +7,18 @@ const board = document.querySelector('.tabuleiro');
 const player = new Piece(pieces.player.x, pieces.player.y);
 const playerElement =  createGameElement('div', 'player', board);
 
-playerElement.style.top = calculaPosicao(player.x);
-playerElement.style.left = calculaPosicao(player.y);
+
+
+function createBoardPiece(piece, className) {
+
+const Element =  createGameElement('div', className, board);
+Element.style.top = calculaPosicao(piece.x);
+Element.style.left = calculaPosicao(piece.y);
+
+return Element;
+
+
+}
 
 window.addEventListener("keydown", function (event) {
     const next = player.nextPosition(event.code);
