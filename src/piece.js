@@ -19,3 +19,9 @@ function Piece(x, y) {
         element.style.left = calculaPosicao(this.y);
     }
 }
+
+function verifyPosition(position) {
+    console.log(position);
+    let { x, y } = position;
+    return boardMap[x][y] !== '#';
+}
