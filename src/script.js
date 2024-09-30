@@ -1,9 +1,12 @@
-const pieces = builGameBoard(NUM_ROWS, NUM_COLS);
+import { builGameBoard, boardMap} from "./board.js";
+import Piece from "./piece.js";
+
+const pieces = builGameBoard();
 const board = document.querySelector('.tabuleiro');
 
 const player = createBoardPiece(pieces.player, 'player');
 
-function createBoardPiece(piecePosition, className) {
+export function createBoardPiece(piecePosition, className) {
     const piece = new Piece(piecePosition.x, piecePosition.y);
     piece.insertElementInto(className, board);
 
@@ -21,6 +24,7 @@ window.addEventListener("keydown", function (event) {
 function verifyPosition(position) {
     console.log(position);
     let { x, y } = position;
+
     return boardMap[x][y] !== '#';
 }
 
