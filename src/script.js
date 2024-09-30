@@ -1,10 +1,14 @@
-import { builGameBoard, boardMap} from "./board.js";
+import { builGameBoard, boardMap, createGameElement} from "./board.js";
 import Piece from "./piece.js";
 
 const pieces = builGameBoard();
 const board = document.querySelector('.tabuleiro');
 
-const player = createBoardPiece(pieces.player, 'player');
+console.log(pieces);
+
+const playerPieces = createBoardPiece(pieces.player, 'player');
+    
+    
 
 export function createBoardPiece(piecePosition, className) {
     const piece = new Piece(piecePosition.x, piecePosition.y);
@@ -13,11 +17,19 @@ export function createBoardPiece(piecePosition, className) {
     return piece;
 }
 
+for (let i = 0;  i < pieces.boxes.length; i ++) {
+    createBoardPiece( pieces.boxes [i], 'caixa');
+    
+}
+
+
+
+
 window.addEventListener("keydown", function (event) {
-    const next = player.nextPosition(event.code);
+    const next = playerPieces.nextPosition(event.code);
 
     if (verifyPosition(next)) {
-        player.moveTo(next);
+        playerPieces.moveTo(next);
     }
 })
 

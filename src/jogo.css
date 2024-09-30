@@ -96,7 +96,11 @@ body{
     margin: 2px;
     border: 8px solid;
     border-radius: 20%;
-
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: coral;
+    box-sizing: border-box;
   }
 
    

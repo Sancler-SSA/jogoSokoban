@@ -4,7 +4,7 @@ export const boardMap = [
     ["#", ".", ".", ".", "#", ".", ".", "#"],
     ["#", ".", "#", "G", ".", ".", ".", "#"],
     ["#", ".", ".", "G", "B", "#", ".", "#"],
-    ["#", ".", ".", "#", ".", "B", ".", "#"],
+    ["#", "B", ".", "#", ".", "B", ".", "#"],
     ["#", ".", ".", "P", ".", ".", ".", "#"],
     ["#", "#", "#", "#", "#", "#", "#", "#"]
 ];
@@ -31,12 +31,12 @@ export function builGameBoard() {
 
             const char = boardMap[i][j];
 
-            const position = { x: j, y: i } ;
+            const position = { x: j, y: i };
 
 
             if (char === '#') cell.classList.add(['wall']);
             if (char === 'G') cell.classList.add('goal');
-            if (char === 'B') cell.classList.add('box');
+            // if (char === 'B') cell.classList.add('box');
             if (char === 'P') pieces.player = position;
             if (char === 'B') pieces.boxes.push (position);
 
