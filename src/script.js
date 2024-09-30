@@ -23,9 +23,9 @@ window.addEventListener("keydown", function (event) {
 
 function verifyPosition(position) {
     console.log(position);
-    let { x, y } = position;
+    let { x: j, y: i }  = position;
 
-    return boardMap[x][y] !== '#';
+    return boardMap[i ][j] !== '#';
 }
 
 
