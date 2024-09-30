@@ -99,8 +99,9 @@ body{
     position: absolute;
     top: 0;
     left: 0;
-    background-color: coral;
+    background-color: rgb(248, 74, 10);
     box-sizing: border-box;
+
   }
 
    
