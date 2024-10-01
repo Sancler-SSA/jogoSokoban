@@ -1,18 +1,26 @@
-import { builGameBoard, boardMap, createGameElement} from "./board.js";
+import { builGameBoard, boardMap} from "./board.js";
 import Piece from "./piece.js";
 
 const pieces = builGameBoard();
 const board = document.querySelector('.tabuleiro');
 
-console.log(pieces);
 
 const playerPieces = createBoardPiece(pieces.player, 'player');
 const boxes = [];
 
-for (let box of pieces.boxes){
-    createBoardPiece(pieces.block[i],'block');
-}
+   
+for (let i = 0;  i < pieces.boxes.length; i ++) {
+    let piece = createBoardPiece( pieces.boxes [i], 'caixa');
+    boxes.push(piece);
     
+}
+function handlekeydownEvent(keycode){
+    const next = playerPieces.nextPosition(keycode);
+
+    if (verifyPosition(next)) {
+        playerPieces.moveTo(next);
+    }
+}
     
 
 export function createBoardPiece(piecePosition, className) {
@@ -22,32 +30,52 @@ export function createBoardPiece(piecePosition, className) {
     return piece;
 }
 
-function handlekeydownEvent(keycode){
-    const next = playerPieces.nextPosition(event.code);
+window.addEventListener("keydown", function (event) {
+    event.preventDefault();
 
-    if (verifyPosition(next)) {
-        playerPieces.moveTo(next);
+    handlePieceMovement(event.code);
+});
+
+/** Tarefa #1: implementar função para localizar uma caixa à partir de um
+ * uma dada coordenada.
+*/
+function findBoxAtPosition(position) {
+    // modificar linha(s) de código abaixo
+    return null;
+}
+
+/** Tarefa #2: modificar a função abaixo de forma a tratar tando a movimentação
+ * do jogador quanto das caixas.
+*/
+function handlePieceMovement(keycode){
+    // Variável destinada ao pré-cálculo da posição do jogador
+    const next = player.nextPosition(keycode);
+    // (Modificar) Variável para detectar a "presença" de outra peça
+    const foundPice = null;
+
+    // Implementar lógica caso encontre uma outra peça no caminho.
+    if(foundPice) {
+
+    }
+    // E caso não encontre outra peça...
+    else {
+        // Faça as modificações que forem necessárias para manter o
+        // funcionamento do jogo.
+        if (verifyPosition(next)) {
+            player.moveTo(next);
+        }
     }
 }
 
 
+// window.addEventListener("keydown", function (event) {
+//     event.preventDefault();
+// })
 
-for (let i = 0;  i < pieces.boxes.length; i ++) {
-    createBoardPiece( pieces.boxes [i], 'caixa');
-    
-}
+// function verifyPosition(position) {
+//     console.log(position);
+//     let { x: j, y: i }  = position;
 
-
-window.addEventListener("keydown", function (event) {
-    
-
-function verifyPosition(position) {
-    console.log(position);
-    let { x: j, y: i }  = position;
-
-    return boardMap[i ][j] !== '#';
-}
-}
-
-
+//     return boardMap[i ][j] !== '#';
+// }
 

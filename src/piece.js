@@ -39,7 +39,6 @@ function Piece(x, y) {
 }
 
 function calculaPosicao(qtd) {
-
     return `${qtd * distanciaSalto + margirFix}px`;
 }
 
