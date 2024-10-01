@@ -1,11 +1,11 @@
-import { builGameBoard, boardMap} from "./board.js";
-import Piece from "./piece.js";
+import { builGameBoard } from "./board.js";
+import Piece, { verifyPosition } from "./piece.js";
 
 const pieces = builGameBoard();
 const board = document.querySelector('.tabuleiro');
 
 
-const playerPieces = createBoardPiece(pieces.player, 'player');
+const player = createBoardPiece(pieces.player, 'player');
 const boxes = [];
 
    
@@ -31,7 +31,7 @@ export function createBoardPiece(piecePosition, className) {
 }
 
 window.addEventListener("keydown", function (event) {
-    event.preventDefault();
+//     event.preventDefault();
 
     handlePieceMovement(event.code);
 });
@@ -40,9 +40,15 @@ window.addEventListener("keydown", function (event) {
  * uma dada coordenada.
 */
 function findBoxAtPosition(position) {
+ 
+    
+    return boxes.find((caixa) => caixa.x === position.x && caixa.y === position.y);
+
     // modificar linha(s) de código abaixo
-    return null;
 }
+
+
+
 
 /** Tarefa #2: modificar a função abaixo de forma a tratar tando a movimentação
  * do jogador quanto das caixas.
@@ -68,14 +74,4 @@ function handlePieceMovement(keycode){
 }
 
 
-// window.addEventListener("keydown", function (event) {
-//     event.preventDefault();
-// })
-
-// function verifyPosition(position) {
-//     console.log(position);
-//     let { x: j, y: i }  = position;
-
-//     return boardMap[i ][j] !== '#';
-// }
 
