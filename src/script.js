@@ -1,12 +1,17 @@
-import { builGameBoard } from "./board.js";
+import { boardMap, builGameBoard } from "./board.js";
 import Piece, { verifyPosition } from "./piece.js";
 
-const pieces = builGameBoard();
+const {pieces, numberOfGoal} = builGameBoard();
 const board = document.querySelector('.tabuleiro');
 
 
 const player = createBoardPiece(pieces.player, 'player');
 const boxes = [];
+
+function levantaPlaquinha (){
+    alert("Você chegou no seu destino");
+}
+
 
    
 for (let i = 0;  i < pieces.boxes.length; i ++) {
@@ -70,6 +75,12 @@ function handlePieceMovement(keycode){
         if(caixaCanMove && ! outraCaixa){
             caixa.moveTo(nextCaixaPosition);
             player.moveTo(nextPlayerPosition);
+
+            const qtdCaixasCertas = contagemDeCaixaCorretas();
+
+            if (qtdCaixasCertas == numberOfGoal) {
+                setTimeout(levantaPlaquinha, 500);
+            }
             
         }
        
@@ -84,5 +95,18 @@ function handlePieceMovement(keycode){
     }
 }
 
+function contagemDeCaixaCorretas(){
+    let count = 0;
 
+    for(let b=0; b < boxes.length; b++){
+        const position = boxes[b]
+        let {x: j, y: i} = position;
 
+        console.log(i, j)
+        if(boardMap[i][j] === 'G') count++;
+    }
+    
+    // console.log(contagemDeCaixaCorretas());
+    return count;
+
+}
