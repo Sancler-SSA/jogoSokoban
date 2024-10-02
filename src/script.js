@@ -1,9 +1,29 @@
-const pieces = builGameBoard(NUM_ROWS, NUM_COLS);
+import { builGameBoard } from "./board.js";
+import Piece, { verifyPosition } from "./piece.js";
+
+const pieces = builGameBoard();
 const board = document.querySelector('.tabuleiro');
 
-const player = createBoardPiece(pieces.player, 'player');
 
-function createBoardPiece(piecePosition, className) {
+const player = createBoardPiece(pieces.player, 'player');
+const boxes = [];
+
+   
+for (let i = 0;  i < pieces.boxes.length; i ++) {
+    let piece = createBoardPiece( pieces.boxes [i], 'caixa');
+    boxes.push(piece);
+    
+}
+function handlekeydownEvent(keycode){
+    const next = playerPieces.nextPosition(keycode);
+
+    if (verifyPosition(next)) {
+        playerPieces.moveTo(next);
+    }
+}
+    
+
+export function createBoardPiece(piecePosition, className) {
     const piece = new Piece(piecePosition.x, piecePosition.y);
     piece.insertElementInto(className, board);
 
@@ -11,19 +31,58 @@ function createBoardPiece(piecePosition, className) {
 }
 
 window.addEventListener("keydown", function (event) {
-    const next = player.nextPosition(event.code);
+//     event.preventDefault();
 
-    if (verifyPosition(next)) {
-        player.moveTo(next);
-    }
-})
+    handlePieceMovement(event.code);
+});
 
-function verifyPosition(position) {
-    console.log(position);
-    let { x, y } = position;
-    return boardMap[x][y] !== '#';
+/** Tarefa #1: implementar função para localizar uma caixa à partir de um
+ * uma dada coordenada.
+*/
+function findBoxAtPosition(position) {
+ 
+    
+    return boxes.find((caixa) => caixa.x === position.x && caixa.y === position.y);
+
+    // modificar linha(s) de código abaixo
 }
 
+
+
+
+/** Tarefa #2: modificar a função abaixo de forma a tratar tando a movimentação
+ * do jogador quanto das caixas.
+*/
+function handlePieceMovement(keycode){
+    // Variável destinada ao pré-cálculo da posição do jogador
+    const nextPlayerPosition = player.nextPosition(keycode);
+    // (Modificar) Variável para detectar a "presença" de outra peça
+    const caixa = findBoxAtPosition(nextPlayerPosition);
+
+    // Implementar lógica caso encontre uma outra peça no caminho.
+    if(caixa) { 
+        const nextCaixaPosition = caixa.nextPosition(keycode);
+        const outraCaixa = findBoxAtPosition(nextCaixaPosition);
+       
+        const caixaCanMove = verifyPosition(nextCaixaPosition);
+    
+
+        if(caixaCanMove && ! outraCaixa){
+            caixa.moveTo(nextCaixaPosition);
+            player.moveTo(nextPlayerPosition);
+            
+        }
+       
+    }
+    // E caso não encontre outra peça...
+    else {
+        // Faça as modificações que forem necessárias para manter o
+        // funcionamento do jogo.
+        if (verifyPosition(nextPlayerPosition)) {
+            player.moveTo(nextPlayerPosition);
+        }
+    }
+}
 
 
 

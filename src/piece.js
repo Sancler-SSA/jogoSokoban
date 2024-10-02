@@ -1,3 +1,6 @@
+import { boardMap, createGameElement } from "./board.js";
+
+
 const distanciaSalto = 66;
 const margirFix = 4;
 
@@ -5,11 +8,11 @@ function Piece(x, y) {
     this.x = x;
     this.y = y;
     this.nextPosition = function (keycode) {
-        let { x, y } = player;
-        if (keycode === "ArrowUp") x--;
-        if (keycode === "ArrowDown") x++;
-        if (keycode === "ArrowLeft") y--;
-        if (keycode === "ArrowRight") y++;
+        let { x, y } = this;
+        if (keycode === "ArrowUp") y--;
+        if (keycode === "ArrowDown") y++;
+        if (keycode === "ArrowLeft") x--;
+        if (keycode === "ArrowRight") x++;
         return { x, y };
     }
     this.moveTo = function (position) {
@@ -29,14 +32,23 @@ function Piece(x, y) {
     
     this.updateElementPosition = function () {
         
-        this.element.style.top = calculaPosicao(this.x);
-        this.element.style.left = calculaPosicao(this.y);
+        this.element.style.top = calculaPosicao(this.y);
+        this.element.style.left = calculaPosicao(this.x);
     }
 
 }
 
 function calculaPosicao(qtd) {
-
     return `${qtd * distanciaSalto + margirFix}px`;
+}
+
+export default Piece;// window.addEventListener("keydown", function (event) {
+//     event.preventDefault();
+// })
+export function verifyPosition(position) {
+    console.log(position);
+    let { x: j, y: i } = position;
+
+    return boardMap[i][j] !== '#';
 }
 
