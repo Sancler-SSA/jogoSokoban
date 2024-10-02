@@ -1,4 +1,4 @@
-import { builGameBoard } from "./board.js";
+import { boardMap, builGameBoard } from "./board.js";
 import Piece, { verifyPosition } from "./piece.js";
 
 const pieces = builGameBoard();
@@ -70,6 +70,12 @@ function handlePieceMovement(keycode){
         if(caixaCanMove && ! outraCaixa){
             caixa.moveTo(nextCaixaPosition);
             player.moveTo(nextPlayerPosition);
+
+            const qtdCaixasCertas = contagemDeCaixaCorretas();
+
+            if (qtdCaixasCertas === 3){
+                alert("Voce chegou ao seu destino")
+            }
             
         }
        
@@ -84,5 +90,18 @@ function handlePieceMovement(keycode){
     }
 }
 
+function contagemDeCaixaCorretas(){
+    let count = 0;
 
+    for(let b=0; b < boxes.length; b++){
+        const position = boxes[b]
+        let {x: j, y: i} = position;
 
+        console.log(i, j)
+        if(boardMap[i][j] === 'G') count++;
+    }
+    
+    // console.log(contagemDeCaixaCorretas());
+    return count;
+
+}
