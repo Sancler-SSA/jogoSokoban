@@ -57,12 +57,22 @@ function handlePieceMovement(keycode){
     // Variável destinada ao pré-cálculo da posição do jogador
     const nextPlayerPosition = player.nextPosition(keycode);
     // (Modificar) Variável para detectar a "presença" de outra peça
-    const foundPiece = findBoxAtPosition(nextPlayerPosition);
+    const caixa = findBoxAtPosition(nextPlayerPosition);
 
     // Implementar lógica caso encontre uma outra peça no caminho.
-    if(foundPiece) {
-        console.log(foundPiece);
+    if(caixa) { 
+        const nextCaixaPosition = caixa.nextPosition(keycode);
+        const outraCaixa = findBoxAtPosition(nextCaixaPosition);
+       
+        const caixaCanMove = verifyPosition(nextCaixaPosition);
+    
 
+        if(caixaCanMove && ! outraCaixa){
+            caixa.moveTo(nextCaixaPosition);
+            player.moveTo(nextPlayerPosition);
+            
+        }
+       
     }
     // E caso não encontre outra peça...
     else {
