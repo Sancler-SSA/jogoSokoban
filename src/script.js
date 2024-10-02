@@ -1,7 +1,7 @@
 import { boardMap, builGameBoard } from "./board.js";
 import Piece, { verifyPosition } from "./piece.js";
 
-const pieces = builGameBoard();
+const {pieces, numberOfGoal} = builGameBoard();
 const board = document.querySelector('.tabuleiro');
 
 
@@ -78,7 +78,7 @@ function handlePieceMovement(keycode){
 
             const qtdCaixasCertas = contagemDeCaixaCorretas();
 
-            if (qtdCaixasCertas == 3) {
+            if (qtdCaixasCertas == numberOfGoal) {
                 setTimeout(levantaPlaquinha, 500);
             }
             
