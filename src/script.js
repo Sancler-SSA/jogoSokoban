@@ -8,6 +8,11 @@ const board = document.querySelector('.tabuleiro');
 const player = createBoardPiece(pieces.player, 'player');
 const boxes = [];
 
+function levantaPlaquinha (){
+    alert("Você chegou no seu destino");
+}
+
+
    
 for (let i = 0;  i < pieces.boxes.length; i ++) {
     let piece = createBoardPiece( pieces.boxes [i], 'caixa');
@@ -73,8 +78,8 @@ function handlePieceMovement(keycode){
 
             const qtdCaixasCertas = contagemDeCaixaCorretas();
 
-            if (qtdCaixasCertas === 3){
-                alert("Voce chegou ao seu destino")
+            if (qtdCaixasCertas == 3) {
+                setTimeout(levantaPlaquinha, 500);
             }
             
         }
