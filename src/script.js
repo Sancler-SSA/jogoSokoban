@@ -9,7 +9,7 @@ const player = createBoardPiece(pieces.player, 'player');
 const boxes = [];
 
 function levantaPlaquinha (){
-    alert("Você chegou no seu destino");
+    alert("Oh! Vida, Oh! Ceus, Oh! Azar.");
 }
 
 

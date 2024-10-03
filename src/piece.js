@@ -40,7 +40,10 @@ function Piece(x, y) {
 
 function calculaPosicao(qtd) {
     return `${qtd * distanciaSalto + margirFix}px`;
+
 }
+
+
 
 export default Piece;// window.addEventListener("keydown", function (event) {
 //     event.preventDefault();

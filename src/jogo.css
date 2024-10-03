@@ -81,8 +81,10 @@ body{
     border-radius: 50%;
     width: 64px;
     height: 64px;
-    border: solid 4px rgb(32, 30, 192);
-    background-color: blue;
+    /* border: solid 4px rgba(1, 1, 6, 0.657); */
+    background-image: url('hiena.jpg');
+    background-size: cover;
+    background-position: center;
     position: absolute;
     top: 0;
     left: 0;

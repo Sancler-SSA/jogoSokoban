@@ -1,18 +1,29 @@
+// import Piece from "./piece";
+
+
+// export function string2BoardMap(level){
+//     const lines = level.trim().split('\n');
+//     console.log(lines);
+
+//     return lines;
+// }
+// export const boardMap = string2BoardMap(lvl0);
+
+
 export const boardMap = [
-    ["#", "#", "#", "#", "#", "#", "#", "#"],
-    ["#", ".", ".", ".", ".", ".", ".", "#"],
+    ["_", "_", "#", "#", "#", "#", "#"],
+    ["#", "#", ".", ".", ".", ".", "#"],
     ["#", ".", ".", ".", "#", ".", ".", "#"],
     ["#", ".", "#", ".", "G", ".", ".", "#"],
     ["#", ".", ".", ".", "B", "#", ".", "#"],
     ["#", ".", "G", "B", "P", "B", "G", "#"],
-    ["#", ".", ".", ".", ".", ".", ".", "#"],
-    ["#", "#", "#", "#", "#", "#", "#", "#"]
+    [" ", "#", ".", ".", ".", ".", "#", "#"],
+    [" ", "#", "#", "#", "#", "#"]
 ];
 
 
 
 const NUM_ROWS = boardMap.length;
-const NUM_COLS = boardMap[0].length;
 
 export function builGameBoard() {
     const pieces = {
@@ -24,11 +35,12 @@ export function builGameBoard() {
     const board = createGameElement('div', 'tabuleiro', game);
     
     let numberOfGoal = 0;
-
+    
     for (let i = 0; i < NUM_ROWS; i++) {
         const row = createGameElement('div', 'row', board);
         board.append(row);
-
+        const NUM_COLS = boardMap[i].length;
+        
         for (let j = 0; j < NUM_COLS; j++) {
             const cell = createGameElement('div', 'cell', row);
 
@@ -38,6 +50,8 @@ export function builGameBoard() {
 
 
             if (char === '#') cell.classList.add(['wall']);
+            if (char === ' ') cell.classList.add(['vazio']);
+            if (char === '_') cell.classList.add(['vazio']);
             if (char === 'G') {
                 cell.classList.add('goal');
                 numberOfGoal++;}
