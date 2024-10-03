@@ -1,8 +1,13 @@
-import { boardMap, builGameBoard } from "./board.js";
-import Piece, { verifyPosition } from "./piece.js";
+import { builGameBoard } from "./board.js";
+import Piece from "./piece.js";
+import { lvl0, lvlI, lvlII } from "./level.js";
 
-const {pieces, numberOfGoal} = builGameBoard();
+
+
+const {boardMap, pieces, numberOfGoal} = builGameBoard(lvl0);
 const board = document.querySelector('.tabuleiro');
+
+console.log(boardMap);
 
 
 const player = createBoardPiece(pieces.player, 'player');
@@ -109,4 +114,11 @@ function contagemDeCaixaCorretas(){
     // console.log(contagemDeCaixaCorretas());
     return count;
 
+}
+
+export function verifyPosition(position) {
+    console.log(position);
+    let { x: j, y: i } = position;
+
+    return boardMap[i][j] !== '#';
 }

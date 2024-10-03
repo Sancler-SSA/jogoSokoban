@@ -1,35 +1,37 @@
 // import Piece from "./piece";
 
-
-// export function string2BoardMap(level){
-//     const lines = level.trim().split('\n');
-//     console.log(lines);
-
-//     return lines;
-// }
-// export const boardMap = string2BoardMap(lvl0);
+// import { lvl0, lvlI, lvlII } from "./levle.js";
 
 
-export const boardMap = [
-    ["_", "_", "#", "#", "#", "#", "#"],
-    ["#", "#", ".", ".", ".", ".", "#"],
-    ["#", ".", ".", ".", "#", ".", ".", "#"],
-    ["#", ".", "#", ".", "G", ".", ".", "#"],
-    ["#", ".", ".", ".", "B", "#", ".", "#"],
-    ["#", ".", "G", "B", "P", "B", "G", "#"],
-    [" ", "#", ".", ".", ".", ".", "#", "#"],
-    [" ", "#", "#", "#", "#", "#"]
-];
+export function string2BoardMap(level){
+    const lines = level.trim().split('\n');
+    console.log(lines);
+
+    return lines;
+}
 
 
-
-const NUM_ROWS = boardMap.length;
-
-export function builGameBoard() {
-    const pieces = {
-        boxes:[]
-        
-    };
+// export const boardMap = [
+    //     ["_", "_", "#", "#", "#", "#", "#"],
+    //     ["#", "#", ".", ".", ".", ".", "#"],
+    //     ["#", ".", ".", ".", "#", ".", ".", "#"],
+    //     ["#", ".", "#", ".", "G", ".", ".", "#"],
+    //     ["#", ".", ".", ".", "B", "#", ".", "#"],
+    //     ["#", ".", "G", "B", "P", "B", "G", "#"],
+    //     ["#", ".", ".", ".", ".", ".", "#", "#"],
+    //     [" ", "#", "#", "#", "#", "#"]
+    // ];
+    
+    
+    
+    
+    export function builGameBoard(mapa) {
+        const boardMap = string2BoardMap(mapa);
+        const pieces = {
+            boxes:[]
+            
+        };
+        const NUM_ROWS = boardMap.length;
     
     const game = document.getElementById("game");
     const board = createGameElement('div', 'tabuleiro', game);
@@ -55,7 +57,7 @@ export function builGameBoard() {
             if (char === 'G') {
                 cell.classList.add('goal');
                 numberOfGoal++;}
-            // if (char === 'B') cell.classList.add('box');
+            if (char === 'B') cell.classList.add('box');
             if (char === 'P') pieces.player = position;
             if (char === 'B')
                  pieces.boxes.push (position);
@@ -64,7 +66,7 @@ export function builGameBoard() {
     }
 
     return {
-        pieces, numberOfGoal
+        pieces, numberOfGoal, boardMap
     };
 }
 

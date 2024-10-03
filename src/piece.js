@@ -1,4 +1,4 @@
-import { boardMap, createGameElement } from "./board.js";
+import { createGameElement } from "./board.js";
 
 
 const distanciaSalto = 66;
@@ -48,10 +48,4 @@ function calculaPosicao(qtd) {
 export default Piece;// window.addEventListener("keydown", function (event) {
 //     event.preventDefault();
 // })
-export function verifyPosition(position) {
-    console.log(position);
-    let { x: j, y: i } = position;
-
-    return boardMap[i][j] !== '#';
-}
 
