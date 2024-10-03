@@ -79,7 +79,7 @@ function handlePieceMovement(keycode){
             const qtdCaixasCertas = contagemDeCaixaCorretas();
 
             if (qtdCaixasCertas == numberOfGoal) {
-                setTimeout(levantaPlaquinha, 500);
+                setTimeout(levantaPlaquinha, 300);
             }
             
         }
