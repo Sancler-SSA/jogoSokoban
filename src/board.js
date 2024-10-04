@@ -3,12 +3,12 @@
 // import { lvl0, lvlI, lvlII } from "./levle.js";
 
 
-export function string2BoardMap(level){
-    const lines = level.trim().split('\n');
-    console.log(lines);
+// export function string2BoardMap(level){
+//     const lines = level.trim().split('\n');
+//     console.log(lines);
 
-    return lines;
-}
+//     return lines;
+// }
 
 
 // export const boardMap = [
@@ -26,7 +26,7 @@ export function string2BoardMap(level){
     
     
     export function builGameBoard(mapa) {
-        const boardMap = string2BoardMap(mapa);
+        const boardMap = mapa.trim().split('\n');
         const pieces = {
             boxes:[]
             
@@ -36,7 +36,7 @@ export function string2BoardMap(level){
     const game = document.getElementById("game");
     const board = createGameElement('div', 'tabuleiro', game);
     
-    let numberOfGoal = 0;
+    let numberOfGoals = 0;
     
     for (let i = 0; i < NUM_ROWS; i++) {
         const row = createGameElement('div', 'row', board);
@@ -56,7 +56,7 @@ export function string2BoardMap(level){
             if (char === '_') cell.classList.add(['vazio']);
             if (char === 'G') {
                 cell.classList.add('goal');
-                numberOfGoal++;}
+                numberOfGoals++;}
             if (char === 'B') cell.classList.add('box');
             if (char === 'P') pieces.player = position;
             if (char === 'B')
@@ -66,7 +66,7 @@ export function string2BoardMap(level){
     }
 
     return {
-        pieces, numberOfGoal, boardMap
+        pieces, numberOfGoals, boardMap
     };
 }
 

@@ -4,7 +4,7 @@ import { lvl0, lvlI, lvlII } from "./level.js";
 
 
 
-const {boardMap, pieces, numberOfGoal} = builGameBoard(lvl0);
+const { boardMap, pieces, numberOfGoals } = builGameBoard(lvl0);
 const board = document.querySelector('.tabuleiro');
 
 console.log(boardMap);
@@ -13,25 +13,25 @@ console.log(boardMap);
 const player = createBoardPiece(pieces.player, 'player');
 const boxes = [];
 
-function levantaPlaquinha (){
+function levantaPlaquinha() {
     alert("Oh! Vida, Oh! Ceus, Oh! Azar.");
 }
 
 
-   
-for (let i = 0;  i < pieces.boxes.length; i ++) {
-    let piece = createBoardPiece( pieces.boxes [i], 'caixa');
+
+for (let i = 0; i < pieces.boxes.length; i++) {
+    let piece = createBoardPiece(pieces.boxes[i], 'caixa');
     boxes.push(piece);
-    
+
 }
-function handlekeydownEvent(keycode){
+function handlekeydownEvent(keycode) {
     const next = playerPieces.nextPosition(keycode);
 
     if (verifyPosition(next)) {
         playerPieces.moveTo(next);
     }
 }
-    
+
 
 export function createBoardPiece(piecePosition, className) {
     const piece = new Piece(piecePosition.x, piecePosition.y);
@@ -41,8 +41,6 @@ export function createBoardPiece(piecePosition, className) {
 }
 
 window.addEventListener("keydown", function (event) {
-//     event.preventDefault();
-
     handlePieceMovement(event.code);
 });
 
@@ -50,8 +48,6 @@ window.addEventListener("keydown", function (event) {
  * uma dada coordenada.
 */
 function findBoxAtPosition(position) {
- 
-    
     return boxes.find((caixa) => caixa.x === position.x && caixa.y === position.y);
 
     // modificar linha(s) de código abaixo
@@ -63,35 +59,33 @@ function findBoxAtPosition(position) {
 /** Tarefa #2: modificar a função abaixo de forma a tratar tando a movimentação
  * do jogador quanto das caixas.
 */
-function handlePieceMovement(keycode){
+function handlePieceMovement(keycode) {
     // Variável destinada ao pré-cálculo da posição do jogador
     const nextPlayerPosition = player.nextPosition(keycode);
     // (Modificar) Variável para detectar a "presença" de outra peça
     const caixa = findBoxAtPosition(nextPlayerPosition);
 
     // Implementar lógica caso encontre uma outra peça no caminho.
-    if(caixa) { 
+    if (caixa) {
         const nextCaixaPosition = caixa.nextPosition(keycode);
         const outraCaixa = findBoxAtPosition(nextCaixaPosition);
-       
-        const caixaCanMove = verifyPosition(nextCaixaPosition);
-    
 
-        if(caixaCanMove && ! outraCaixa){
+        const caixaCanMove = verifyPosition(nextCaixaPosition);
+
+
+        if (caixaCanMove && !outraCaixa) {
             caixa.moveTo(nextCaixaPosition);
             player.moveTo(nextPlayerPosition);
 
-            const qtdCaixasCertas = contagemDeCaixaCorretas();
+            // const qtdCaixasCertas = contagemDeCaixaCorretas();
 
-            if (qtdCaixasCertas == numberOfGoal) {
-                setTimeout(levantaPlaquinha, 300);
-            }
-            
+            // if (qtdCaixasCertas == numberOfGoal) {
+            //     setTimeout(levantaPlaquinha, 300);
+            // }
+
         }
-       
-    }
-    // E caso não encontre outra peça...
-    else {
+        if (levelCompleted()) setTimeout(() => alert("Oh! Vida, Oh! Ceus, Oh! Azar."), 250);
+    } else {
         // Faça as modificações que forem necessárias para manter o
         // funcionamento do jogo.
         if (verifyPosition(nextPlayerPosition)) {
@@ -100,19 +94,20 @@ function handlePieceMovement(keycode){
     }
 }
 
-function contagemDeCaixaCorretas(){
+
+function levelCompleted() {
     let count = 0;
 
-    for(let b=0; b < boxes.length; b++){
+    for (let b = 0; b < boxes.length; b++) {
         const position = boxes[b]
-        let {x: j, y: i} = position;
+        let { x: j, y: i } = position;
 
         console.log(i, j)
-        if(boardMap[i][j] === 'G') count++;
+        if (boardMap[i][j] === 'G') count++;
     }
-    
-    // console.log(contagemDeCaixaCorretas());
-    return count;
+
+
+    return count == numberOfGoals;
 
 }
 
