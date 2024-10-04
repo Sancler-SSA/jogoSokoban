@@ -1,6 +1,5 @@
 import { createGameElement } from "./board.js";
 
-
 const distanciaSalto = 66;
 const margirFix = 4;
 
@@ -23,29 +22,21 @@ function Piece(x, y) {
         this.updateElementPosition();
     }
 
-    this.insertElementInto = function(className, parent){
-        this.element =  createGameElement('div', className, parent);
+    this.insertElementInto = function (className, parent) {
+        this.element = createGameElement('div', className, parent);
 
         this.updateElementPosition();
-        
     }
-    
+
     this.updateElementPosition = function () {
-        
+
         this.element.style.top = calculaPosicao(this.y);
         this.element.style.left = calculaPosicao(this.x);
     }
 
+    function calculaPosicao(qtd) {
+        return `${qtd * distanciaSalto + margirFix}px`;
+    }
 }
 
-function calculaPosicao(qtd) {
-    return `${qtd * distanciaSalto + margirFix}px`;
-
-}
-
-
-
-export default Piece;// window.addEventListener("keydown", function (event) {
-//     event.preventDefault();
-// })
-
+export default Piece;
