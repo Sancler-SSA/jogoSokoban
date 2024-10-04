@@ -1,9 +1,7 @@
 import { builGameBoard } from "./board.js";
 import { lvl0, lvlI, lvlII } from "./level.js";
 
-const { boardMap, pieces, numberOfGoals } = builGameBoard(lvl0);
-
-const { player, boxes } = pieces;
+const { boardMap, pieces: { player, boxes }, numberOfGoals } = builGameBoard(lvl0);
 
 window.addEventListener("keydown", function (event) {
     handlePieceMovement(event.code);

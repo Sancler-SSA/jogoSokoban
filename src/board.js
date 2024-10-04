@@ -2,23 +2,17 @@ import Piece from "./piece.js";
 
 export function builGameBoard(mapa) {
     const boardMap = mapa.trim().split('\n');
-    const pieces = {
-        boxes: []
-
-    };
-    const NUM_ROWS = boardMap.length;
-
+        
     const game = document.getElementById("game");
     const board = createGameElement('div', 'tabuleiro', game);
 
-    let numberOfGoals = 0;
+    let numberOfGoals = 0, boxes = [], player = null;
 
-    for (let i = 0; i < NUM_ROWS; i++) {
+    for (let i = 0; i < boardMap.length; i++) {
         const row = createGameElement('div', 'row', board);
-        board.append(row);
-        const NUM_COLS = boardMap[i].length;
+      
 
-        for (let j = 0; j < NUM_COLS; j++) {
+        for (let j = 0; j < boardMap[i].length; j++) {
             const cell = createGameElement('div', 'cell', row);
 
             const char = boardMap[i][j];
@@ -29,24 +23,17 @@ export function builGameBoard(mapa) {
             if (char === '#') cell.classList.add(['wall']);
             if (char === ' ') cell.classList.add(['vazio']);
             if (char === '_') cell.classList.add(['vazio']);
-            // if (char === 'B') cell.classList.add('box');
-            // if (char === 'P') pieces.player = position;
-            // if (char === 'B')
-            //     pieces.boxes.push(position);
-            if (char === 'P') pieces.player = createBoardPiece(position, 'player');
-            if (char === 'B') pieces.boxes.push(createBoardPiece(position, 'caixa'));
             if (char === 'G') {
                 cell.classList.add('goal');
                 numberOfGoals++;
-            }
-            
+            }          
+            if (char === 'P') player = createBoardPiece(position, 'player');
+            if (char === 'B') boxes.push(createBoardPiece(position, 'caixa'));
         }
 
     }
 
-    return {
-        pieces, numberOfGoals, boardMap
-    };
+    return { boardMap, pieces: { boxes, player }, numberOfGoals };
 }
 
 export function createGameElement(elementName, className, parentNode) {
