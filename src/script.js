@@ -1,25 +1,9 @@
 import { builGameBoard } from "./board.js";
-import Piece from "./piece.js";
 import { lvl0, lvlI, lvlII } from "./level.js";
 
 const { boardMap, pieces, numberOfGoals } = builGameBoard(lvl0);
-const board = document.querySelector('.tabuleiro');
 
-const player = createBoardPiece(pieces.player, 'player');
-const boxes = [];
-
-for (let i = 0; i < pieces.boxes.length; i++) {
-    let piece = createBoardPiece(pieces.boxes[i], 'caixa');
-    boxes.push(piece);
-
-}
-
-export function createBoardPiece(piecePosition, className) {
-    const piece = new Piece(piecePosition.x, piecePosition.y);
-    piece.insertElementInto(className, board);
-
-    return piece;
-}
+const { player, boxes } = pieces;
 
 window.addEventListener("keydown", function (event) {
     handlePieceMovement(event.code);
@@ -64,8 +48,6 @@ function levelCompleted() {
         console.log(i, j)
         if (boardMap[i][j] === 'G') count++;
     }
-
-
     return count == numberOfGoals;
 
 }

@@ -1,3 +1,4 @@
+
 import { createGameElement } from "./board.js";
 
 const distanciaSalto = 66;
@@ -22,14 +23,15 @@ function Piece(x, y) {
         this.updateElementPosition();
     }
 
-    this.insertElementInto = function (className, parent) {
-        this.element = createGameElement('div', className, parent);
+    this.insertElementInto = function(className, parent){
+        this.element =  createGameElement('div', className, parent);
 
         this.updateElementPosition();
+        
     }
-
+    
     this.updateElementPosition = function () {
-
+        
         this.element.style.top = calculaPosicao(this.y);
         this.element.style.left = calculaPosicao(this.x);
     }

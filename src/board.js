@@ -1,3 +1,5 @@
+import Piece from "./piece.js";
+
 export function builGameBoard(mapa) {
     const boardMap = mapa.trim().split('\n');
     const pieces = {
@@ -27,14 +29,17 @@ export function builGameBoard(mapa) {
             if (char === '#') cell.classList.add(['wall']);
             if (char === ' ') cell.classList.add(['vazio']);
             if (char === '_') cell.classList.add(['vazio']);
+            // if (char === 'B') cell.classList.add('box');
+            // if (char === 'P') pieces.player = position;
+            // if (char === 'B')
+            //     pieces.boxes.push(position);
+            if (char === 'P') pieces.player = createBoardPiece(position, 'player');
+            if (char === 'B') pieces.boxes.push(createBoardPiece(position, 'caixa'));
             if (char === 'G') {
                 cell.classList.add('goal');
                 numberOfGoals++;
             }
-            if (char === 'B') cell.classList.add('box');
-            if (char === 'P') pieces.player = position;
-            if (char === 'B')
-                pieces.boxes.push(position);
+            
         }
 
     }
@@ -49,4 +54,12 @@ export function createGameElement(elementName, className, parentNode) {
     element.classList.add(className);
     parentNode.append(element);
     return element;
+}
+
+function createBoardPiece(piecePosition, className) {
+    const board = document.querySelector('.tabuleiro');
+    const piece = new Piece(piecePosition.x, piecePosition.y);
+    
+    piece.insertElementInto(className, board);
+    return piece;
 }
